@@ -35,8 +35,16 @@ const Chat = ({ location }) => {
   }, [messages])
 
   const sendMessage = e => {
-    console.log(e)
+    e.preventDefault()
+    console.log('yoyoyoyoyo')
+    if (message) {
+      socket.emit('sendMessage', message, () => {
+        setMessage('')
+      })
+    }
   }
+
+  console.log(message, messages)
 
   return (
     <ChatOuterContainer>

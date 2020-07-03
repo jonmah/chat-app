@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import queryString from 'query-string'
 import io from 'socket.io-client'
+import styled from 'styled-components'
 
 let socket
 
@@ -33,7 +34,25 @@ const Chat = ({ location }) => {
     })
   }, [messages])
 
-  return <h1>Chat</h1>
+  const sendMessage = e => {
+    console.log(e)
+  }
+
+  return (
+    <ChatOuterContainer>
+      <ChatInnerContainer>
+        <input
+          value={message}
+          onChange={e => setMessage(e.target.value)}
+          onKeyPress={e => (e.key === 'Enter' ? sendMessage(e) : null)}
+        />
+      </ChatInnerContainer>
+    </ChatOuterContainer>
+  )
 }
+
+const ChatOuterContainer = styled.div``
+
+const ChatInnerContainer = styled.div``
 
 export default Chat

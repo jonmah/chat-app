@@ -7,7 +7,7 @@ let socket
 const Chat = ({ location }) => {
   const [name, setName] = useState('')
   const [room, setRoom] = useState('')
-  const ENDPOINT = 'locahost:5000'
+  const ENDPOINT = 'localhost:5000'
 
   useEffect(() => {
     const { name, room } = queryString.parse(location.search)
@@ -17,7 +17,7 @@ const Chat = ({ location }) => {
     setName(name)
     setRoom(room)
 
-    socket.emit('Join', { name, room })
+    socket.emit('join', { name, room })
     console.log(socket)
   }, [ENDPOINT, location.search])
 

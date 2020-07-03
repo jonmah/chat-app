@@ -34,7 +34,6 @@ const Join = () => {
           <button type='submit'>Sign In</button>
         </Link>
       </JoinInnerContainer>
-      Join
     </JoinOuterContainer>
   )
 }

@@ -2,6 +2,8 @@ const express = require('express')
 const socketio = require('socket.io')
 const http = require('http')
 
+const { addUser, removeUser, getUser, getUsersFromRoom } = require('./users')
+
 const PORT = process.env.port || 5000
 
 const router = require('./router')

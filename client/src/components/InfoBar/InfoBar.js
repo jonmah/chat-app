@@ -4,11 +4,13 @@ import styled from 'styled-components'
 const InfoBar = ({ room }) => (
   <InfoBarContainer>
     <StatusContainer>
-      <img src='http://bit.ly/firstIcon' />
+      <img src='http://bit.ly/firstIcon' alt='online image' />
       <h3>{room}</h3>
     </StatusContainer>
     <CloseContainer>
-      <img src='http://bit.ly/secondIcon' />
+      <a href='/'>
+        <img src='http://bit.ly/secondIcon' alt='close image' />
+      </a>
     </CloseContainer>
   </InfoBarContainer>
 )

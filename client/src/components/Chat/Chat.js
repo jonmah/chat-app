@@ -4,6 +4,7 @@ import io from 'socket.io-client'
 import styled from 'styled-components'
 
 import InfoBar from '../InfoBar/InfoBar'
+import Messages from '../Messages/Messages'
 import Form from '../Form/Form'
 
 let socket
@@ -51,6 +52,7 @@ const Chat = ({ location }) => {
   return (
     <ChatContainer>
       <InfoBar room={room} />
+      <Messages messages={messages} />
       <Form
         message={message}
         sendMessage={sendMessage}
@@ -60,6 +62,8 @@ const Chat = ({ location }) => {
   )
 }
 
-const ChatContainer = styled.div``
+const ChatContainer = styled.div`
+  max-height: 500px;
+`
 
 export default Chat

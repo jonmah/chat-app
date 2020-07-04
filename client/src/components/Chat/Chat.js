@@ -3,6 +3,8 @@ import queryString from 'query-string'
 import io from 'socket.io-client'
 import styled from 'styled-components'
 
+import InfoBar from '../InfoBar/InfoBar'
+
 let socket
 
 const Chat = ({ location }) => {
@@ -20,7 +22,7 @@ const Chat = ({ location }) => {
     setName(name)
     setRoom(room)
 
-    socket.emit('join', { name, room })
+    socket.emit('join', { name, room }, () => {})
     console.log(socket)
     return () => {
       socket.emit('disconnect')
@@ -36,7 +38,6 @@ const Chat = ({ location }) => {
 
   const sendMessage = e => {
     e.preventDefault()
-    console.log('yoyoyoyoyo')
     if (message) {
       socket.emit('sendMessage', message, () => {
         setMessage('')
@@ -47,20 +48,17 @@ const Chat = ({ location }) => {
   console.log(message, messages)
 
   return (
-    <ChatOuterContainer>
-      <ChatInnerContainer>
-        <input
-          value={message}
-          onChange={e => setMessage(e.target.value)}
-          onKeyPress={e => (e.key === 'Enter' ? sendMessage(e) : null)}
-        />
-      </ChatInnerContainer>
-    </ChatOuterContainer>
+    <ChatContainer>
+      <InfoBar room={room} />
+      <input
+        value={message}
+        onChange={e => setMessage(e.target.value)}
+        onKeyPress={e => (e.key === 'Enter' ? sendMessage(e) : null)}
+      />
+    </ChatContainer>
   )
 }
 
-const ChatOuterContainer = styled.div``
-
-const ChatInnerContainer = styled.div``
+const ChatContainer = styled.div``
 
 export default Chat
